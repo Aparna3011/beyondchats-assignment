@@ -33,14 +33,23 @@ class ScrapeBeyondChatsBlogs extends Command
     $this->info('Starting BeyondChats blog scraping...');
 
     $blogUrls = [
-        'https://beyondchats.com/blogs/chatbots-for-small-business-growth/',
+         'https://beyondchats.com/blogs/chatbots-for-small-business-growth/',
+         'https://beyondchats.com/blogs/lead-generation-chatbots/',
+         'https://beyondchats.com/blogs/virtual-assistant/',
+         'https://beyondchats.com/blogs/live-chatbot/',
+         'https://beyondchats.com/blogs/introduction-to-chatbots/',
         // add 4 more URLs from page 15
     ];
 
     foreach ($blogUrls as $url) {
         $this->info("Scraping: {$url}");
 
-        $response = Http::get($url);
+        $response = Http::timeout(60)
+    ->withHeaders([
+        'User-Agent' => 'Mozilla/5.0 (compatible; BeyondChatsBot/1.0)',
+    ])
+    ->get($url);
+
 
         if (!$response->successful()) {
             $this->error("Failed to fetch {$url}");
