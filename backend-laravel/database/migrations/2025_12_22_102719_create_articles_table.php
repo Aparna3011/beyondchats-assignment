@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('slug')->unique();
         $table->string('title');
         $table->longText('content');
-        $table->enum('version', ['original', 'updated'])->default('original');
+        $table->string('version')->default('original');
         $table->json('references')->nullable();
         $table->string('source_url')->nullable();
         $table->timestamp('published_at')->nullable();

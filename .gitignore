@@ -1,0 +1,13 @@
+# Node
+node_modules/
+node-pipeline/node_modules/
+node-pipeline/.env
+
+# Laravel
+backend-laravel/.env
+backend-laravel/vendor/
+backend-laravel/database/database.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
